@@ -1,17 +1,18 @@
-'''
-오큰수
-Ai의 오큰수 : 오른쪽에 있으면서 Ai보다 큰 수 중에서 가장 왼쪽에 있는 수
-그러한 수가 없는 경우에 오큰수는 -1
+# 2중 for 문 => 시간초과
 
-A = [3, 5, 2, 7]
-NGE(1) = 5
-NGE(2) = 7
-NGE(3) = 7
-NGE(4) = -1
+import sys
+input = sys.stdin.readline
 
-스택을 사용해서 어떻게 하지? 쉽게 하는 방법이 있나?
+n = int(input())
+A = list(map(int, input().split()))
+ans = [-1] * n
+stack = []
 
+for i in range(n):
+    while stack and (stack[-1][0] < A[i]):
+        tmp, idx = stack.pop()
+        ans[idx] = A[i]
+    stack.append([A[i], i])
+print(*ans)
 
-
-'''
-
+# print(*리스트) 하면, 띄어쓰기가 된 채로 리스트의 원소가 출력된다.
