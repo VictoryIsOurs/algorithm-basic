@@ -4,3 +4,6 @@
 
 [브랜치 merge하기](https://goddaehee.tistory.com/275)
 
+아직 안푼 것 : 
+
+1918
