@@ -1,32 +1,27 @@
 import sys
 input = sys.stdin.readline
 
-S = list(input())
+S = input().strip()
+ans = ''
 stack = []
-
-for i in range(len(S)):
-    if ord(S[i]) >= ord('A') and ord(S[i]) <= ord('Z'):
-        print(S[i])
-    if S[i] == '+' or S[i] == '-':
-        if not stack:
-            while stack:
-                print(stack.pop())
-        stack.append(S[i])
-    elif S[i] == '*' or S[i] == '/':
-        if not stack:
-            idx = -1
-            while stack[idx] == '*' and stack[idx] == '/':
-                print(stack.pop())
-                idx -= 1
-        stack.append(S[i])
-    elif S[i] == '(':
-        stack.append(S[i])
-    elif S[i] == ')':
-        idx = -1
-        while True:
-            if stack[idx] == '(':
-                break
-            print(stack.pop())
-            idx -= 1
+for s in S:
+    if ord(s) >= ord('A') and ord(s) <= ord('Z'):
+        ans += s
+    else:
+        if s == '(':
+            stack.append(s)
+        elif s == ')':
+            while stack[-1] != '(':
+                ans += stack.pop()
+            stack.pop()
+        elif s == '*' or s == '/':
+            while stack and (stack[-1] == '*' or stack[-1] == '/'):
+                ans += stack.pop()
+            stack.append(s)
+        else:
+            while stack and stack[-1] != '(':
+                ans += stack.pop()
+            stack.append(s)
 while stack:
-    print(stack.pop())
+    ans += stack.pop()
+print(ans)
