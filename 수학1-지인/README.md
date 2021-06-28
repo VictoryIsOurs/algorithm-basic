@@ -58,9 +58,27 @@
    	print(a, b) # 결과 : AB, AC, AD, BC, BD, CD
    ```
 
-   ------
+6. n진법으로 입력받기
+
+   `int(input(), n)`
+
+7. 10진수에서 2진수, 8진수, 16진수 변환
+
+   ```python
+   value = 50
    
-   다시 풀어야 할 문제
+   b = bin(value)
+   o = oct(value)
+   h = hex(value)
+   ```
+
    
-   - [ ] 2004
+
+   
+
+------
+
+다시 풀어야 할 문제
+
+- [ ] 2004
 
